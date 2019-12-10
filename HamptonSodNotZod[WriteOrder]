@@ -1,0 +1,50 @@
+//Author: Trevon Hampton
+//Course: Cpt 187
+//Purpose:
+//CreateDate: 12/04/2019
+
+package edu.cpt187.hampton.exercise6;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class WriteOrder 
+{
+	private String masterFileName = "";
+	private int recordCount = 0;
+
+	WriteOrder(String borrowedFileName)
+	{
+		masterFileName = borrowedFileName;
+	}//End of constructor 
+
+	//Setters
+	public void setWriteOrder(int borrowedItemID, String borrowedItemName, double borrowedItemPrice, int borrowedQuanity, double borrowedOrderCost)
+	{
+		try
+		{
+			PrintWriter filePW = new PrintWriter (new FileWriter(masterFileName, true));
+
+			filePW.printf("%d\t%s\t%.2f\t%d\t%.2f\r", borrowedItemID, borrowedItemName, borrowedItemPrice, borrowedQuanity, borrowedOrderCost);
+			recordCount++;
+			filePW.close();
+		}//End of try
+		catch(IOException ex)
+		{
+
+		}//End of catch
+	}//End of setWriteOrder
+
+	//Getters
+	public String getFileName()
+	{
+		return masterFileName;
+	}//End of getFileName
+
+	public int getRecordCount()
+	{
+		return recordCount;
+	}//End of getRecordCount
+
+}//End of OrderWriter Class
